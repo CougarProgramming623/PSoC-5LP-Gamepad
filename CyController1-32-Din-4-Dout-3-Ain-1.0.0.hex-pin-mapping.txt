@@ -1,0 +1,11 @@
+Pin Mapping for CyController1-32-Din-4-Dout-3-Ain-1.0.0.hex.
+
+P3[7:0] => Button[8:1]
+P0[7:0] => Button[16:9]
+P2[7:0] => Button[32:25]
+P1[2] => Analog X
+P1[3] => Analog Y
+P1[4] => Analog Z
+P15[3:0] => LED[4:1]
+
+Note that Buttons 17 and 18 are unusable due to the I2C interface on the same pins.
