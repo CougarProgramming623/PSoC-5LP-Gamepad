@@ -34,11 +34,11 @@ USA
 #include <stdio.h>
 
 /* 8 bytes for analog axis data */
-#define ANALOG_SIZE 8
-/* 3 bytes for 22 button inputs */
-#define BUTTON_SIZE 3
-/* 2 bytes for 12 output indicators such as LEDs */
-#define OUTPUT_SIZE 2
+#define ANALOG_SIZE 3
+/* 4 bytes for 32 button inputs */
+#define BUTTON_SIZE 4
+/* 1 byte for 2 output indicators such as LEDs */
+#define OUTPUT_SIZE 1
 
 /* Endpoint 1 is IN (analog and buttons) */
 #define IN_EP  1
@@ -146,13 +146,14 @@ void ReadButtons (void)
     USB_Input_Data[ANALOG_SIZE]   = ButtonReg1_Read(); /* First button byte is after the last analog value */
     USB_Input_Data[ANALOG_SIZE+1] = ButtonReg2_Read();
     USB_Input_Data[ANALOG_SIZE+2] = ButtonReg3_Read();
+    USB_Input_Data[ANALOG_SIZE+3] = ButtonReg4_Read();
 }
 
 void SetOutputs (void)
 {
     /* Write data received from USB to the output control registers */   
     OutputReg1_Write(USB_Output_Data[0]);
-    OutputReg2_Write(USB_Output_Data[1]);
+    //OutputReg2_Write(USB_Output_Data[1]);
 }
 
 /* End of File */
